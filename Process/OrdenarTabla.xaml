@@ -1,0 +1,243 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OrdenarTabla" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="inConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="outDtbConsolidado" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1410.4,2065.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>OrdenarTabla_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="OrdenarTabla" sap:VirtualizedContainerService.HintSize="699.2,1960.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="EndProcess" sap:VirtualizedContainerService.HintSize="657.6,1868" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="vDtbConsolidado" />
+        <Variable x:TypeArguments="x:Boolean" Name="vBoolExisteArchivo" />
+        <Variable x:TypeArguments="x:Boolean" Name="vBoolParametrizacion" />
+        <Variable x:TypeArguments="sd:DataTable" Name="vDtbAux" />
+        <Variable x:TypeArguments="sd:DataTable" Name="vDtbUDNs" />
+        <Variable x:TypeArguments="sd:DataTable" Name="vDtbConsolidadoOriginal" />
+        <Variable x:TypeArguments="sd:DataTable" Name="vDtbConsolidadoOrdenado" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Consolidado" sap:VirtualizedContainerService.HintSize="616,68.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:PathExists DisplayName="Ruta existente" Exists="[vBoolExisteArchivo]" sap:VirtualizedContainerService.HintSize="577.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Path.Combine(inConfig(&quot;RutaArchivosGenerados&quot;).ToString, inConfig(&quot;ArchivoSalida&quot;).ToString+&quot;.xlsx&quot;)]" PathType="File" />
+        <If Condition="[vBoolExisteArchivo]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="577.6,237.6" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[vDtbConsolidado]" DisplayName="Leer rango" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[inConfig(&quot;HojaSalida&quot;).ToString]" WorkbookPath="[Path.Combine(inConfig(&quot;RutaArchivosGenerados&quot;).ToString, inConfig(&quot;ArchivoSalida&quot;).ToString+&quot;.xlsx&quot;)]" />
+          </If.Then>
+          <If.Else>
+            <Throw DisplayName="Lanzar excepción" Exception="[new BusinessRuleException(&quot;EndProcess: No se encontró archivo&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="UDNS" sap:VirtualizedContainerService.HintSize="616,68.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:PathExists DisplayName="Ruta existente" Exists="[vBoolParametrizacion]" sap:VirtualizedContainerService.HintSize="722.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[Path.Combine(inConfig(&quot;RutaParametrizacion&quot;).ToString, inConfig(&quot;ParametrizacionFile&quot;).ToString + &quot;.xlsx&quot;)]" PathType="File" />
+        <If Condition="[vBoolParametrizacion]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="722.4,561.6" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="478.4,412" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="436.8,319.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                <TryCatch.Try>
+                  <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[vDtbUDNs]" DisplayName="Leer rango" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[inConfig(&quot;HojaUDN&quot;).ToString]" WorkbookPath="[Path.Combine(inConfig(&quot;RutaParametrizacion&quot;).ToString, inConfig(&quot;ParametrizacionFile&quot;).ToString + &quot;.xlsx&quot;)]" />
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Throw DisplayName="Lanzar excepción" Exception="[new BusinessRuleException(&quot;GetTransactionData: No se pudo acceder a la tabla en la hoja&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Throw DisplayName="Lanzar excepción" Exception="[new BusinessRuleException(&quot;GetTransactionData: no se encontro archivo parametrización&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Ordenar" sap:VirtualizedContainerService.HintSize="616,1199.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="574.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable">[vDtbConsolidadoOriginal]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="574.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable">[vDtbConsolidadoOrdenado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado.Clone]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="574.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable">[vDtbUDNs]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable">[vDtbUDNs.DefaultView.ToTable(True, inConfig("ColUDN").ToString)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbUDNs]" DisplayName="Para cada fila" sap:VirtualizedContainerService.HintSize="574.4,806.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,657.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[vDtbConsolidado.AsEnumerable.Where(Function(fila) fila(inConfig(&quot;ColUDNPedido&quot;).ToString).ToString.Trim.Equals(row(inConfig(&quot;ColUDN&quot;).ToString).ToString)).Count  &gt; 0]" sap:VirtualizedContainerService.HintSize="483.2,564.8" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="304,415.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataTable">[vDtbAux]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado.AsEnumerable.Where(Function(fila) fila(inConfig("ColUDNPedido").ToString).ToString.Trim.Equals(row(inConfig("ColUDN").ToString).ToString)).CopyToDataTable]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[vDtbAux.DefaultView.Sort]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["["+inConfig("ColCuenta").ToString+"] ASC"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataTable">[vDtbAux]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataTable">[vDtbAux.DefaultView.ToTable]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:MergeDataTable Destination="[vDtbConsolidadoOrdenado]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[vDtbAux]" />
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEachRow.Body>
+        </ui:ForEachRow>
+      </Sequence>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="616,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Path.Combine(inConfig(&quot;RutaArchivosGenerados&quot;).ToString, inConfig(&quot;ArchivoSalida&quot;).ToString+&quot;.xlsx&quot;)]" />
+      <ui:WriteRange AddHeaders="True" DataTable="[vDtbConsolidadoOrdenado]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="616,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[inConfig(&quot;HojaSalida&quot;).ToString]" StartingCell="A1" WorkbookPath="[Path.Combine(inConfig(&quot;RutaArchivosGenerados&quot;).ToString, inConfig(&quot;ArchivoSalida&quot;).ToString+&quot;.xlsx&quot;)]" />
+      <Assign sap:VirtualizedContainerService.HintSize="616,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[outDtbConsolidado]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidadoOrdenado]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+  </Sequence>
+</Activity>
